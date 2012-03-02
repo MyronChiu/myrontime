@@ -1,0 +1,25 @@
+$(".time").animate({"-webkit-perspective":"800"}, "ease")
+
+:plain
+  <script>
+    var init = function() {
+      var minutes = document.getElementById('minutes'),
+          navButtons = document.querySelectorAll('#navigation button'),
+          panelCount = minutes.children.length,
+          transformProp = Modernizr.prefixed('transform'),
+          theta = 0,
+          
+          onNavButtonClick = function( event ){
+            var increment = parseInt( event.target.getAttribute('data-increment') );
+            theta += ( 360 / panelCount ) * increment * 1;
+            minutes.style[ transformProp ] = 'translateZ( 0px) translateY(0px) translateX(0px) rotateY(' + theta + 'deg)';
+          };
+
+      for (var i=0; i < 2; i++) {
+        navButtons[i].addEventListener( 'click', onNavButtonClick, false);
+      }
+      
+    };
+      
+    window.addEventListener( 'DOMContentLoaded', init, false);
+  </script>
