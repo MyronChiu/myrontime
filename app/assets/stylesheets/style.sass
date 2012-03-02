@@ -16,7 +16,7 @@ body
 
 #page
   width: 100%
-  height: 2000px
+  height: 500px
   background: url(/assets/irongrip.png)
   .container
     margin: 0 auto
@@ -39,7 +39,13 @@ body
   -webkit-perspective: 1000
 
 #seconds,
-#minutes
+#minutes,
+#hours
+  -webkit-transition: -webkit-transform 1s
+  -moz-transition: -moz-transform 1s
+  -ms-transition: -ms-transform 1s
+  -o-transition: -o-transform 1s
+  transition: transform 1s
   text-align: center
   font-family: helvetica
   width: 100%
@@ -51,24 +57,35 @@ body
     position: absolute
     width: 25px
     height: 40px
-    left: 10px
-    top: 10px
+    left: 48px
+    top: 100px
     border: 1px solid black
 
 #minutes
   figure
     width: 35px
     top: -50px
+#hours
+  figure
+    height: 150px
+    width: 55px
+    top: -100px
 
 
 #seconds figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
-      -webkit-transform: rotateY(6deg * $i) translateZ(288px)
+      -webkit-transform: rotateY(6deg * $i) translateZ(400px)
       background-color: hsla( $i * 6 , 100%, 50%, 0.8)
 
 #minutes figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
-      -webkit-transform: rotateY(6deg * $i) translateZ(388px)
+      -webkit-transform: rotateY(6deg * $i) translateZ(350px)
+      background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
+
+#hours figure,
+  @for $i from 1 through 24
+    &:nth-child(#{$i})
+      -webkit-transform: rotateY(15deg * $i) translateZ(200px)
       background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
