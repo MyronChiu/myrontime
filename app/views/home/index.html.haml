@@ -1,6 +1,9 @@
 #page
   .container
-    .time.seconds
-      #carousel
+    .time
+      #seconds
+        -(1..60).each do |i|
+          %figure #{i}
+      #minutes
         -(1..60).each do |i|
           %figure #{i}
