@@ -1,12 +1,13 @@
 #page
   .container
     .time
-      #seconds
-        -(1..60).each do |i|
+      #hours
+        -(1..24).each do |i|
           %figure #{i}
       #minutes
         -(1..60).each do |i|
           %figure #{i}
-      #hours
-        -(1..24).each do |i|
+      #seconds
+        -(1..60).each do |i|
           %figure #{i}
+
