@@ -31,3 +31,8 @@ $("thing").css({-webkit-transform})
       background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
 
       background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
+
+
+$("#seconds figure").contents().parent().css("background","red");
+
+$($("#seconds figure").filter("figure")[5]).hide()
