@@ -3,18 +3,16 @@
     .whole
       %a{:href => 'blog'} test
       .time
+        #testing
+          -(1..360).each do |i|
+            %figure ;
         #hours
           -(1..24).each do |i|
             %figure #{i}
-
         #seconds
           -(1..60).each do |i|
             %figure #{i}
         #minutes
           -(1..60).each do |i|
             %figure #{i}
-        #testing_ring
-          -(1..36).each do |i|
-            %figure #{i}
-    .half
-      test          
+
