@@ -1,8 +1,11 @@
 $page: 980px
 
 body
+  background: url(/assets/gridme.png)
   margin: 0
-
+  font-family: Helvetica, Arial, sans-serif
+  a
+    font-size: 30px
 .clear
   clear: both
 
@@ -17,18 +20,31 @@ body
 #page
   width: 100%
   height: 1000px
-  background: url(/assets/irongrip.png)
   .container
+    position: relative
     margin: 0 auto
     width: $page
-    height: 100%
-    .seconds
-    .minutes
-      background: red
-      opacity: .5
-    .hours
-    .days
-    .months
+    .whole,
+    .half,
+    .third,
+    .fourth
+      padding: 20px
+      margin-top: 20px
+    
+    .whole
+      width: $page - 40
+      height: 400px
+      -moz-border-radius: 40px 40px 0px 0px
+      border-radius: 40px 40px 0px 0px
+    .half
+      width: 50%
+      -moz-border-radius: 0px 0px 0px 40px
+      border-radius: 0px 0px 0px 40px
+    .third
+    .fourth
+    
+    
+
 
 .time
   width: 210px
@@ -36,11 +52,12 @@ body
   position: relative
   padding-top: 300px
   margin: 0 auto 0 auto
-  -webkit-perspective: 1500
-
+  -webkit-perspective: 1000
+  bottom: 135px
 #seconds,
 #minutes,
-#hours
+#hours,
+#testing_ring
   -webkit-transition: -webkit-transform 1s
   -moz-transition: -moz-transform 1s
   -ms-transition: -ms-transform 1s
@@ -55,11 +72,14 @@ body
   figure
     display: block
     position: absolute
-    width: 25px
-    height: 40px
+    height: 60px
     left: 48px
-    top: 100px
     border: 1px solid black
+
+#seconds
+  figure
+    width: 25px
+    top: 60px
 
 #minutes
   figure
@@ -67,24 +87,35 @@ body
     top: -50px
 #hours
   figure
-    width: 35px
+    width: 60px
     top: -150px
-
+    left: 36px
+#testing_ring
+  figure
+    width: 25px
+    top: 200px
+  -webkit-animation: spin 8s infinite linear
 
 #seconds figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
       -webkit-transform: rotateY(6deg * $i) translateZ(400px)
-      background-color: hsla( $i * 6 , 100%, 50%, 0.8)
+      background-color: rgba(255, 255, 255, 0.8)
 
 #minutes figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
       -webkit-transform: rotateY(6deg * $i) translateZ(350px)
-      background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
+      background-color: rgba(255, 255, 255, 0.8)
 
 #hours figure,
   @for $i from 1 through 24
     &:nth-child(#{$i})
       -webkit-transform: rotateY(15deg * $i) translateZ(300px)
-      background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
+      background-color: rgba(255, 255, 255, 0.8)
+
+#testing_ring figure,
+  @for $i from 1 through 36
+    &:nth-child(#{$i})
+      -webkit-transform: rotateY(10deg * $i) translateZ(300px)
+      background-color: rgba(255, 255, 255, 0.8)

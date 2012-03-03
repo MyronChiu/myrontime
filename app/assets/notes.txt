@@ -1,5 +1,7 @@
-$(".time").animate({"-webkit-perspective":"800"}, "ease")
+need range for time considerations in minutes and hours and use getHours getMinutes to have it increment at the proper times
 
+$(".time").animate({"-webkit-perspective":"800"}, "ease")
+$("thing").css({-webkit-transform})
 :plain
   <script>
     var init = function() {
@@ -23,3 +25,9 @@ $(".time").animate({"-webkit-perspective":"800"}, "ease")
       
     window.addEventListener( 'DOMContentLoaded', init, false);
   </script>
+
+      background-color: hsla( $i * 6 , 100%, 50%, 0.8)
+
+      background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
+
+      background-color: hsla( $i * 1.1 , 100%, 50%, 0.8)
