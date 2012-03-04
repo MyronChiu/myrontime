@@ -1,16 +1,23 @@
 $page: 980px
 
-
 body
   margin: 0
   color: white
   font-family: 'Play', sans-serif
   background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000))
 
+a
+  color: royalblue
+
 h1
-  font-size: 25px
+  font-size: 20px
   text-decoration: underline
   margin: 0
+
+h2
+  color: lime
+  margin: 0
+  font-weight: normal
 
 ul li
   list-style: none
@@ -26,6 +33,8 @@ ul li
   position: relative
   float: right
 
+// -----------------  Structure  ---------------- //
+
 #page
   .container
     position: relative
@@ -34,45 +43,53 @@ ul li
     .whole,
     .half,
     .third,
-    .fourth,
-    .clock
+    .twothird,
+    .myron,
       padding: 20px
       height: 400px   
-      margin: 0px 10px 0px 0px
-
-    .clock
-      margin: 0 auto
-      width: 400px
-
-    .whole
-      height: 500px
-    .half
-      width: 50%
-      border-radius: 0px 0px 0px 40px
-    .third
-      width: $page * .27 + 3px
-      background: black
-      z-index: -1
-      border: 3px solid white
+      margin: 20px 20px 0px 0px
       margin-right: 20px
       &:last-child
         margin-right: 0px
-    .fourth
+
+    .half,
+    .twothird,
+    .third,
+    .whole,
+    .myron
+      width: $page * .27 + 3px
+      background: black
+      border: 3px solid white
+
+    .twothird
+      width: $page * .61 + 3px
+    .half
+      width: 44.3%
+    .whole
+      width: 95.3%
+      height: auto
+    .myron
+      width: 200px
+      height: auto
+.bottom
+  margin-bottom: 50px !important
+
+// -----------------  Clock  ---------------- //
 
 .time
   width: 210px
   height: 140px
   position: relative
-  padding-top: 300px
-  margin: 0 auto 0 auto
+  padding-top: 320px
+  margin: 0 auto
   -webkit-perspective: 1000
   bottom: 135px
+
 #seconds,
 #minutes,
 #hours,
 #spinner
   -webkit-transition: -webkit-transform .9s
-
   transition: transform .9s
   text-align: center
   width: 100%

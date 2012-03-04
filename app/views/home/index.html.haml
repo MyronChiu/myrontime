@@ -1,30 +1,95 @@
 #page
   .container
-    .clock
-      .time
-        #spinner
-          -(1..360).each do |i|
-            %figure 
-        #hours
-          -(1..24).each do |i|
-            %figure #{i}
-        #seconds
-          -(1..60).each do |i|
-            %figure #{i}
-        #minutes
-          -(1..60).each do |i|
-            %figure #{i}
+    .time
+      #spinner
+        -(1..360).each do |i|
+          %figure 
+      #hours
+        -(1..24).each do |i|
+          %figure #{i}
+      #seconds
+        -(1..60).each do |i|
+          %figure #{i}
+      #minutes
+        -(1..60).each do |i|
+          %figure #{i}
   .container.clear
     .third.left.clear
       %h1 Concept & Coolness
       %p It's a clock made entirely with HAML/SASS and a little javascript.
-      %p The 3D carousel effect is accomplished by utilizing webkit transform, perspective and transition properties.
-      %p I had to use Modernizr
-      %p There are no images on the page.
-    .third.left.clear
-      layout type
-    .third.left.clear
-      demonstration stuff
-  .container 
-    .half.left
-    .half.left
+      %p The 3D carousel effect is accomplished using webkit transform, perspective and transition.
+      %p Used loops in both HAML and SASS to not have to individually style 504 clock parts.
+      %p There are no images on the page except my head explosion thing.
+      %h1 Slight Grievances
+      %p Haven't had time to fix it in mozilla or safari yet. Didn't even give IE a chance.
+    .twothird.left.clear
+      %h2.right
+        By Myron Chiu
+      %h1 Example SASS Loop
+      %pre
+        :plain
+          \\
+          #spinner figure,
+            @for $i from 1 through 360
+              &:nth-child(#{$i})
+                -webkit-transform: rotateY(1deg * $i) translateZ(400px)
+                border-color: rgba($i/1.42, $i/1.42, $i/1.42, 0.0021*$i)
+      %h1 Example HAML Loop
+      %pre
+        :plain
+          \\
+          #spinner
+            -(1..360).each do |i|
+              %figure
+      %h1 Resources Referenced
+      %ul
+        %li
+          %a{:href=>"http://24ways.org/2010/intro-to-css-3d-transforms", :target=>"_blank"} 24ways.org - An Introduction to CSS 3-D Transforms
+        %li
+          %a{:href=>"http://www.w3schools.com/jsref/jsref_obj_date.asp", :target=>"_blank"} w3schools.org - JavasScript Date Object
+        %li  
+          %a{:href=>"http://www.w3schools.com/jsref/jsref_parseint.asp", :target=>"_blank"} w3schools.org - JavasScript parseInt() Function
+      %h2.right (╯°□°）╯︵ ┻━┻
+  .container.clear.bottom
+    .whole.left
+      %h1 All Javascript Used
+      %pre
+        :plain
+          \\
+          $(document).ready(function(){
+
+            function time () {
+              var now = new Date();
+              return now.getTime()/1000;
+            }
+
+            function highlighter (ring_section, time_interval) {
+              ring = $("#"+ring_section+" figure").filter("figure")
+              $(ring).css("background-color","rgba(255, 255, 255, .6)").css("color","black")    
+              $(ring[time_interval]).css("background-color","rgba(243, 45, 15, 1)").css("color","white")
+            }
+
+            function highlight () {
+              var sec = (parseInt(time())-1) % 60
+              var min = parseInt((time()-1)/60-1) % 60
+              var hrs = parseInt(((time()-1)/3600-1)-8) % 24
+              highlighter("minutes", min)
+              highlighter("hours", hrs)
+              highlighter("seconds", sec)
+            }
+
+            function rings(){ 
+              var sec_t = 'translateZ(-400px) rotateY(' + -6 * parseInt(time()) + 'deg)';
+              var min_t = 'translateZ( -370px ) rotateY(' + -6 * parseInt(time()/60) + 'deg)';
+              var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
+              var spi_t = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
+
+              $("#seconds").css({"-webkit-transform" : sec_t});
+              $("#minutes").css({"-webkit-transform" : min_t});
+              $("#hours").css({"-webkit-transform" : hrs_t});
+              $("#spinner").css({"-webkit-transform" : spi_t});
+
+            }
+            setInterval(rings, 500);
+            setInterval(highlight, 500);
+          });

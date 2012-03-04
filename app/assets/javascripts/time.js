@@ -21,11 +21,16 @@ $(document).ready(function(){
   }
 
   function rings(){ 
-    transform = Modernizr.prefixed('transform')
-    seconds.style[transform] = 'translateZ( -400px ) rotateY(' + -6 * parseInt(time()) + 'deg)';
-    minutes.style[transform] = 'translateZ( -370px ) rotateY(' + -6 * parseInt(time()/60) + 'deg)';
-    hours.style[transform] = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
-    spinner.style[transform] = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
+    var sec_t = 'translateZ(-400px) rotateY(' + -6 * parseInt(time()) + 'deg)';
+    var min_t = 'translateZ( -370px ) rotateY(' + -6 * parseInt(time()/60) + 'deg)';
+    var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
+    var spi_t = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
+
+    $("#seconds").css({"-webkit-transform" : sec_t});
+    $("#minutes").css({"-webkit-transform" : min_t});
+    $("#hours").css({"-webkit-transform" : hrs_t});
+    $("#spinner").css({"-webkit-transform" : spi_t});
+
   }
   setInterval(rings, 500);
   setInterval(highlight, 500);
