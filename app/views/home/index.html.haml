@@ -1,9 +1,8 @@
-#page  
-  .container  
-    .whole
-      %a{:href => 'blog'} test
+#page
+  .container
+    .clock
       .time
-        #testing
+        #spinner
           -(1..360).each do |i|
             %figure 
         #hours
@@ -15,4 +14,17 @@
         #minutes
           -(1..60).each do |i|
             %figure #{i}
-
+  .container.clear
+    .third.left.clear
+      %h1 Concept & Coolness
+      %p It's a clock made entirely with HAML/SASS and a little javascript.
+      %p The 3D carousel effect is accomplished by utilizing webkit transform, perspective and transition properties.
+      %p I had to use Modernizr
+      %p There are no images on the page.
+    .third.left.clear
+      layout type
+    .third.left.clear
+      demonstration stuff
+  .container 
+    .half.left
+    .half.left
