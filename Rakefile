@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Railstemplate::Application.load_tasks
+Snippet::Application.load_tasks
