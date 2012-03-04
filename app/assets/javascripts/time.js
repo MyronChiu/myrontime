@@ -26,10 +26,10 @@ $(document).ready(function(){
     var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
     var spi_t = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
 
-    $("#seconds").css({"-webkit-transform" : sec_t});
-    $("#minutes").css({"-webkit-transform" : min_t});
-    $("#hours").css({"-webkit-transform" : hrs_t});
-    $("#spinner").css({"-webkit-transform" : spi_t});
+    $("#seconds").css({"-webkit-transform" : sec_t}).css({"-moz-transform" : sec_t});
+    $("#minutes").css({"-webkit-transform" : min_t}).css({"-moz-transform" : min_t});
+    $("#hours").css({"-webkit-transform" : hrs_t}).css({"-moz-transform" : hrs_t});
+    $("#spinner").css({"-webkit-transform" : spi_t}).css({"-moz-transform" : spi_t});
 
   }
   setInterval(rings, 500);

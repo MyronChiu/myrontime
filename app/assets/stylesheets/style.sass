@@ -52,12 +52,6 @@ ul li
       margin-right: 20px
       &:last-child
         margin-right: 0px
-
-    .half,
-    .twothird,
-    .third,
-    .whole,
-    .myron
       width: $page * .27 + 3px
       background: black
       border: 3px solid white
@@ -72,6 +66,7 @@ ul li
     .myron
       width: 200px
       height: auto
+      
 .bottom
   margin-bottom: 50px !important
 
@@ -84,6 +79,8 @@ ul li
   padding-top: 320px
   margin: 0 auto
   -webkit-perspective: 1000
+  -moz-perspective: 1000
+  perspective: 1000
   bottom: 135px
 
 #seconds,
@@ -91,12 +88,15 @@ ul li
 #hours,
 #spinner
   -webkit-transition: -webkit-transform .9s
+  -moz-transition: -moz-transform .9s
   transition: transform .9s
   text-align: center
   width: 100%
   height: 100%
   position: absolute
   -webkit-transform-style: preserve-3d
+  -moz-transform-style: preserve-3d
+  transform-style: preserve-3d
   figure
     font-family: 'Economica', sans-serif  
     color: black
@@ -142,20 +142,25 @@ ul li
   @for $i from 1 through 360
     &:nth-child(#{$i})
       -webkit-transform: rotateY(1deg * $i) translateZ(400px)
+      -moz-transform: rotateY(1deg * $i) translateZ(400px)
+      transform: rotateY(1deg * $i) translateZ(400px)
       border-color: rgba($i/1.42, $i/1.42, $i/1.42, 0.0021*$i)
 
 #seconds figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
       -webkit-transform: rotateY(6deg * $i) translateZ(400px) rotateX(25deg)
+      -moz-transform: rotateY(6deg * $i) translateZ(400px) rotateX(25deg)
 
 #minutes figure,
   @for $i from 1 through 60
     &:nth-child(#{$i})
       -webkit-transform: rotateY(6deg * $i) translateZ(350px)
+      -moz-transform: rotateY(6deg * $i) translateZ(350px)
 
 #hours figure,
   @for $i from 1 through 24
     &:nth-child(#{$i})
       -webkit-transform: rotateY(15deg * $i) translateZ(300px)
+      -moz-transform: rotateY(15deg * $i) translateZ(300px)
 
