@@ -14,7 +14,7 @@ $(document).ready(function(){
   function highlight () {
     var sec = (parseInt(time())-1) % 60
     var min = parseInt((time()-1)/60-1) % 60
-    var hrs = parseInt(((time()-1)/3600-1)-8) % 24
+    var hrs = parseInt(((time()-1)/3600-1)-7) % 24
     highlighter("minutes", min)
     highlighter("hours", hrs)
     highlighter("seconds", sec)
@@ -23,7 +23,7 @@ $(document).ready(function(){
   function rings(){ 
     var sec_t = 'translateZ(-400px) rotateY(' + -6 * parseInt(time()) + 'deg)';
     var min_t = 'translateZ( -370px ) rotateY(' + -6 * parseInt(time()/60) + 'deg)';
-    var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
+    var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-7)) + 'deg)';
     var spi_t = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
 
     $("#seconds").css({"-webkit-transform" : sec_t}).css({"-moz-transform" : sec_t});
@@ -32,8 +32,8 @@ $(document).ready(function(){
     $("#spinner").css({"-webkit-transform" : spi_t}).css({"-moz-transform" : spi_t});
 
   }
-  setInterval(rings, 500);
-  setInterval(highlight, 500);
+  setInterval(rings, 1000);
+  setInterval(highlight, 1000);
 
 });
 
