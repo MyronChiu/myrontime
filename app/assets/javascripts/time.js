@@ -1,13 +1,19 @@
 //
 $(document).ready(function(){
+  
+  // firefox and safari transforms seem to break with degree values over 10 digits,
+  // so instead of raw time I had to use % and revolution counts
+
   var sec_rotations = 0;
   var min_rotations = 0;
   var hrs_rotations = 0;
+
   function time () {
     var now = new Date().getTime()/1000;
     var sec = (parseInt(now)) % 60;
     var min = parseInt((now)/60) % 60;
     var hrs = parseInt(((now)/3600)-7) % 24;
+
     var sec_nomod = -6 * parseInt(now)%360;
     var min_nomod = -6 * parseInt((now)/60)%360;
     var hrs_nomod = -15 * parseInt((((now)/3600)-7))%360;

@@ -26,26 +26,22 @@
       %h1 Slight Grievances
       %p Haven't had time to fix it in mozilla or safari yet. Didn't even give IE a chance.
     .twothird.left.clear
-      %h2.right.extend 
-        Works Best in Chrome! 
-        %br 
-        (╯°□°）╯︵ ┻━┻
       %h1 Example SASS Loop
       %pre
         :plain
           \\
-          #spinner figure,
-            @for $i from 1 through 360
-              &:nth-child(#{$i})
-                -webkit-transform: rotateY(1deg * $i) translateZ(400px)
-                border-color: rgba($i/1.42, $i/1.42, $i/1.42, 0.0021*$i)
+          #minutes figure,
+            @for $i from 1 through 60
+              &:nth-child(# {$i}) //no space after #
+                -webkit-transform: rotateY(-6deg + $i*6) translateZ(350px)
+                -moz-transform: rotateY(-6deg + $i*6) translateZ(350px)
       %h1 Example HAML Loop
       %pre
         :plain
           \\
-          #spinner
-            -(1..360).each do |i|
-              %figure
+          #minutes
+            -(0..59).each do |i|
+              %figure # {$i} //no space after #
       %h1 Resources Referenced
       %ul
         %li
