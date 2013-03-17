@@ -14,7 +14,7 @@ body
   margin: 0
   color: white
   font-family: 'Play', sans-serif
-  background: #222
+  background: #ccc
   background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000))
 
 a
@@ -30,6 +30,9 @@ h2
   margin: 0 0 20px 0
   font-weight: normal
 
+pre
+  font-size: 13px
+  margin-left: -70px
 ul li
   list-style: none
 
@@ -94,9 +97,9 @@ ul li
   position: relative
   padding-top: 320px
   margin: 0 auto
-  -webkit-perspective: 1000
-  -moz-perspective: 1000
-  perspective: 1000
+  -webkit-perspective: 1000px
+  -moz-perspective: 1000px
+  perspective: 1000px
   bottom: 135px
   #seconds,
   #minutes,
@@ -140,33 +143,23 @@ ul li
       left: 29px
       font-size: 40px
       padding: 0px
-  #spinner
-    figure
-      width: 60px
-      top: 200px
-      left: 36px
-      height: 1px
-      border-radius: 0px
-      border: none
-      border-top: 3px solid white
-      background: transparent
-
 
   #seconds figure,
     @for $i from 1 through 60
       &:nth-child(#{$i})
         -webkit-transform: rotateY(-6deg + $i*6) translateZ(400px) rotateX(25deg)
-        -moz-transform: rotateY(6deg + $i*6) translateZ(400px) rotateX(25deg)
+        -moz-transform: rotateY(-6deg + $i*6) translateZ(400px) rotateX(25deg)
 
   #minutes figure,
     @for $i from 1 through 60
       &:nth-child(#{$i})
         -webkit-transform: rotateY(-6deg + $i*6) translateZ(350px)
-        -moz-transform: rotateY(6deg + $i*6) translateZ(350px)
+        -moz-transform: rotateY(-6deg + $i*6) translateZ(350px)
+        z-index: 61-$i
 
   #hours figure,
     @for $i from 1 through 24
       &:nth-child(#{$i})
         -webkit-transform: rotateY(-15deg + $i*15) translateZ(300px)
-        -moz-transform: rotateY(15deg + $i*15) translateZ(300px)
-
+        -moz-transform: rotateY(-15deg + $i*15) translateZ(300px)
+        z-index: 25-$i
