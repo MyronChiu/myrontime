@@ -14,7 +14,7 @@ $(document).ready(function(){
     
     if(sec_nomod % 360 === 0){sec_rotations += 1};
     if(sec_rotations > 0){sec_nomod -= 360*sec_rotations};
-    console.log(sec_rotations);
+
     if(min_nomod % 360 === 0){min_rotations += 1};
     if(min_rotations > 0){min_nomod -= 360*min_rotations}; 
 
