@@ -1,5 +1,15 @@
 $page: 980px
 
+@mixin threed
+  -webkit-transform-style: preserve-3d
+  -moz-transform-style: preserve-3d
+  -o-transform-style: preserve-3d
+  transform-style: preserve-3d
+  -webkit-transition: -webkit-transform .7s
+  -moz-transition: -moz-transform .7s
+  -o-transition: -o-transform .7s
+  transition: transform .7s
+
 body
   margin: 0
   color: white
@@ -72,12 +82,13 @@ ul li
       width: 200px
       height: auto
       
-.bottom
-  margin-bottom: 50px !important
+  .bottom
+    margin-bottom: 50px !important
 
 // -----------------  Clock  ---------------- //
 
 .time
+  @include threed
   width: 210px
   height: 140px
   position: relative
@@ -87,85 +98,75 @@ ul li
   -moz-perspective: 1000
   perspective: 1000
   bottom: 135px
-
-#seconds,
-#minutes,
-#hours,
-#spinner
-  -webkit-transition: -webkit-transform .9s
-  -moz-transition: -moz-transform .9s
-  transition: transform .9s
-  text-align: center
-  width: 100%
-  height: 100%
-  position: absolute
-  -webkit-transform-style: preserve-3d
-  -moz-transform-style: preserve-3d
-  transform-style: preserve-3d
-  figure
-    font-family: 'Economica', sans-serif  
-    color: black
-    display: block
+  #seconds,
+  #minutes,
+  #hours,
+  #spinner
+    @include threed
+    text-align: center
+    width: 100%
+    height: 100%
     position: absolute
-    left: 48px
-    font-size: 25px
-    border: 5px solid black
-    border-radius: 15px 2px 15px 2px
-    line-height: 1.8em
-    padding: 10px 0px
-    background-color: rgba(255, 255, 255, 0.7)
+
+    figure
+      font-family: 'Economica', sans-serif  
+      color: black
+      display: block
+      position: absolute
+      left: 48px
+      font-size: 25px
+      border: 5px solid black
+      border-radius: 15px 2px 15px 2px
+      line-height: 1.8em
+      padding: 10px 0px
+      background-color: rgba(255, 255, 255, 0.7)
+    .highlight
+      background-color: rgba(243, 45, 15, 1)
+      color: white
+
+  #seconds
+    figure
+      width: 25px
+      top: 80px
+
+  #minutes
+    figure
+      width: 24px
+      top: -50px
+  #hours
+    figure
+      width: 60px
+      top: -184px
+      left: 29px
+      font-size: 40px
+      padding: 0px
+  #spinner
+    figure
+      width: 60px
+      top: 200px
+      left: 36px
+      height: 1px
+      border-radius: 0px
+      border: none
+      border-top: 3px solid white
+      background: transparent
 
 
-#seconds
-  figure
-    width: 25px
-    top: 80px
+  #seconds figure,
+    @for $i from 1 through 60
+      &:nth-child(#{$i})
+        -webkit-transform: rotateY(-6deg + $i*6) translateZ(400px) rotateX(25deg)
+        -moz-transform: rotateY(6deg + $i*6) translateZ(400px) rotateX(25deg)
 
-#minutes
-  figure
-    width: 24px
-    top: -50px
-#hours
-  figure
-    width: 60px
-    top: -184px
-    left: 29px
-    font-size: 40px
-    padding: 0px
-#spinner
-  figure
-    width: 60px
-    top: 200px
-    left: 36px
-    height: 1px
-    border-radius: 0px
-    border: none
-    border-top: 3px solid white
-    background: transparent
+  #minutes figure,
+    @for $i from 1 through 60
+      &:nth-child(#{$i})
+        -webkit-transform: rotateY(-6deg + $i*6) translateZ(350px)
+        -moz-transform: rotateY(6deg + $i*6) translateZ(350px)
 
-#spinner figure,
-  @for $i from 1 through 360
-    &:nth-child(#{$i})
-      -webkit-transform: rotateY(1deg * $i) translateZ(400px)
-      -moz-transform: rotateY(1deg * $i) translateZ(400px)
-      transform: rotateY(1deg * $i) translateZ(400px)
-      border-color: rgba($i/1.42, $i/1.42, $i/1.42, 0.0021*$i)
-
-#seconds figure,
-  @for $i from 1 through 60
-    &:nth-child(#{$i})
-      -webkit-transform: rotateY(6deg * $i) translateZ(400px) rotateX(25deg)
-      -moz-transform: rotateY(6deg * $i) translateZ(400px) rotateX(25deg)
-
-#minutes figure,
-  @for $i from 1 through 60
-    &:nth-child(#{$i})
-      -webkit-transform: rotateY(6deg * $i) translateZ(350px)
-      -moz-transform: rotateY(6deg * $i) translateZ(350px)
-
-#hours figure,
-  @for $i from 1 through 24
-    &:nth-child(#{$i})
-      -webkit-transform: rotateY(15deg * $i) translateZ(300px)
-      -moz-transform: rotateY(15deg * $i) translateZ(300px)
+  #hours figure,
+    @for $i from 1 through 24
+      &:nth-child(#{$i})
+        -webkit-transform: rotateY(-15deg + $i*15) translateZ(300px)
+        -moz-transform: rotateY(15deg + $i*15) translateZ(300px)
 

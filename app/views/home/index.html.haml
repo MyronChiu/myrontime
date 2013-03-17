@@ -1,17 +1,19 @@
 #page
   .container
+    .test
+  .container
     .time
-      #spinner
-        -(1..360).each do |i|
-          %figure 
+      / #spinner
+      /   -(1..360).each do |i|
+      /     %figure 
       #hours
-        -(1..24).each do |i|
+        -(0..23).each do |i|
           %figure #{i}
       #seconds
-        -(1..60).each do |i|
+        -(0..59).each do |i|
           %figure #{i}
       #minutes
-        -(1..60).each do |i|
+        -(0..59).each do |i|
           %figure #{i}
   .container.clear
     .third.left.clear
@@ -20,7 +22,7 @@
       %h1 Concept & Coolness
       %p It's a clock made entirely with HAML/SASS and a little javascript.
       %p The 3D carousel effect is accomplished using webkit transform, perspective and transition.
-      %p Used loops in both HAML and SASS to not have to individually style 504 clock parts.
+      %p Used loops in both HAML and SASS to not have to individually style the clock parts.
       %h1 Slight Grievances
       %p Haven't had time to fix it in mozilla or safari yet. Didn't even give IE a chance.
     .twothird.left.clear
@@ -55,46 +57,8 @@
   .container.clear.bottom
     .whole.left
       %h1 All Javascript Used
-      %pre
-        :plain
-          \\
-          $(document).ready(function(){
-
-            function time () {
-              var now = new Date();
-              return now.getTime()/1000;
-            }
-
-            function highlighter (ring_section, time_interval) {
-              ring = $("#"+ring_section+" figure").filter("figure")
-              $(ring).css("background-color","rgba(255, 255, 255, .6)").css("color","black")    
-              $(ring[time_interval]).css("background-color","rgba(243, 45, 15, 1)").css("color","white")
-            }
-
-            function highlight () {
-              var sec = (parseInt(time())-1) % 60
-              var min = parseInt((time()-1)/60-1) % 60
-              var hrs = parseInt(((time()-1)/3600-1)-8) % 24
-              highlighter("minutes", min)
-              highlighter("hours", hrs)
-              highlighter("seconds", sec)
-            }
-
-            function rings(){ 
-              var sec_t = 'translateZ(-400px) rotateY(' + -6 * parseInt(time()) + 'deg)';
-              var min_t = 'translateZ( -370px ) rotateY(' + -6 * parseInt(time()/60) + 'deg)';
-              var hrs_t = 'translateZ( -300px ) rotateY(' + -15 * parseInt(((time()/3600)-8)) + 'deg)';
-              var spi_t = 'translateZ( -400px ) rotateY(' + -360 * parseInt(time()) + 'deg)';
-
-              $("#seconds").css({"-webkit-transform" : sec_t});
-              $("#minutes").css({"-webkit-transform" : min_t});
-              $("#hours").css({"-webkit-transform" : hrs_t});
-              $("#spinner").css({"-webkit-transform" : spi_t});
-
-            }
-            setInterval(rings, 500);
-            setInterval(highlight, 500);
-          });
+      .alljs
+        =render :partial => 'js'
 :plain
   <script type="text/javascript">
 
