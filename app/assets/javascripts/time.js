@@ -9,7 +9,7 @@ $(document).ready(function(){
   var hrs_rotations = 0;
 
   function time () {
-    var now = new Date().getTime()/1000-4000;
+    var now = new Date().getTime()/1000;
     var sec = (parseInt(now)) % 60;
     var min = parseInt((now)/60) % 60;
     var hrs = parseInt(((now)/3600)-7) % 24;
