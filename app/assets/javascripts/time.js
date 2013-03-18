@@ -9,7 +9,7 @@ $(document).ready(function(){
   var hrs_rotations = 0;
 
   function time () {
-    var now = new Date().getTime()/1000;
+    var now = new Date().getTime()/1000-4000;
     var sec = (parseInt(now)) % 60;
     var min = parseInt((now)/60) % 60;
     var hrs = parseInt(((now)/3600)-7) % 24;
@@ -21,10 +21,10 @@ $(document).ready(function(){
     if(sec_nomod % 360 === 0){sec_rotations += 1};
     if(sec_rotations > 0){sec_nomod -= 360*sec_rotations};
 
-    if(min_nomod % 360 === 0){min_rotations += 1};
+    if(min_nomod % 360 === 0 && sec ===0){min_rotations += 1};
     if(min_rotations > 0){min_nomod -= 360*min_rotations}; 
 
-    if(hrs_nomod % 360 === 0){hrs_rotations += 1};
+    if(hrs_nomod % 360 === 0 && min === 0 && sec ===0){hrs_rotations += 1};
     if(hrs_rotations > 0){hrs_nomod -= 360*hrs_rotations};
 
     highlighter("minutes", min);
