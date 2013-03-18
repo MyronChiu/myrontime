@@ -47,6 +47,7 @@ $(document).ready(function(){
   }
 
   time();
-  setInterval(time, 1000);
+  // each run takes about 2.5ms, so set interval time to 998 to prevent mis-ticks
+  setInterval(time, 998);
 });
 
